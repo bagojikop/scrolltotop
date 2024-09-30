@@ -1,0 +1,80 @@
+
+<!-- 
+<input type="text" [(ngModel)]="entity.qty" appDecimal name="quantity"  [number]="3" style="margin: 20px 10px;text-align: right;" (ngModelChange)="getValue(entity)">
+
+
+<input type="text" [(ngModel)]="entity.mrp" appDecimal name="mrp" currency="INR"  [number]="2" style="margin: 20px 10px;text-align: right;" (ngModelChange)="getValue(entity)">
+ -->
+<div class="container-fluid p-3">
+    <div class="row">
+        <div class="col col-sm-3 border p-3">
+            <form #purcharseForm="ngForm">
+
+                <div class="form-group pb-3">
+                    <label for="">Product</label>
+                    <input type="text" class="form-control" name="product" [(ngModel)]="entity.product">
+                </div>
+        
+                <div class="form-group pb-3">
+                    <label for="">Date</label>
+                    <input type="date" class="form-control" name="vch_date" [(ngModel)]="entity.vch_date">
+                </div>
+        
+        
+                <div class="form-group pb-3">
+                    <label for="">Price</label>
+                    <input type="text" class="form-control" name="price" [(ngModel)]="entity.price"
+                    appDecimal currency="INR"  [number]="2" (change)="total()">
+                </div>
+        
+        
+                <div class="form-group pb-3">
+                    <label for="">GST</label>
+                    <input type="text" class="form-control" name="gst" [(ngModel)]="entity.GST"
+                    appDecimal currency="INR"  [number]="2" (change)="total()"
+                    >
+                </div>
+        
+                <div class="form-group pb-3">
+                    <label for="">Total</label>
+                    <input type="text" class="form-control" name="total" [(ngModel)]="entity.total"
+                    appDecimal currency="INR"  [number]="2"
+                    >
+                </div>
+        
+                <button class="btn btn-success w-100" (click)="save()">Submit</button>
+            </form>
+        
+        </div>
+        <div class="col col-sm-9 border p-3">
+            <table  class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Product</td>
+                        <td>Date</td>
+                        <td>Price</td>
+                        <td>GST</td>
+                        <td>Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(item of purchaseList;track item){
+                    <tr>
+                        <td>{{item.product}}</td>
+                        <td>{{item.vch_date | date:'dd-MM-yyyy'}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.GST}}</td>
+                        <td>{{item.total}}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+   
+</div>
+
+
+
+
+
